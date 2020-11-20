@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "roar-web.name" . }}
+  labels:
+    app: {{ template "roar-web.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "roar-db.name" . }}
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "roar-web.name" . }}
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 3000
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: type
+                operator: In
+                values:
+                - mini 
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      {{- if .Values.image.pullPolicy }}
+        imagePullPolicy: {{ toYaml .Values.image.pullPolicy }}
+      {{- end }} 
+        ports:
+        - name: {{ .Values.deployment.ports.name }}
+          containerPort: {{ .Values.deployment.ports.containerPort }}
+       
