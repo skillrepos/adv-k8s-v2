@@ -2,7 +2,7 @@ FROM mysql:5.7.32
 
 
 COPY docker-entrypoint-initdb.d /docker-entrypoint-initdb.d/
-USER mysql
+USER 999
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["mysqld"] 
