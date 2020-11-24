@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: ResourceQuota
+  metadata:
+    name: pods-critical
+  spec:
+    hard:
+      cpu: "500"
+      memory: 10Gi
+      pods: "5"
+    scopeSelector:
+      matchExpressions:
+      - operator: In
+        scopeName: PriorityClass
+        values: ["critical"]
+- apiVersion: v1
+  kind: ResourceQuota
+  metadata:
+    name: pods-average
+  spec:
+    hard:
+      cpu: "50"
+      memory: 5Gi
+      pods: "5"
+    scopeSelector:
+      matchExpressions:
+      - operator: In
+        scopeName: PriorityClass
+        values: ["average"]
+- apiVersion: v1
+  kind: ResourceQuota
+  metadata:
+    name: pods-nominal
+  spec:
+    hard:
+      cpu: "5"
+      memory: 1Gi
+      pods: "5"
+    scopeSelector:
+      matchExpressions:
+      - operator: In
+        scopeName: PriorityClass
+        values: ["nominal"]

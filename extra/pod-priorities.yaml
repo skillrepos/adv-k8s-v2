@@ -1,0 +1,23 @@
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: critical
+value: 100
+globalDefault: false
+description: "This priority class should be used for the most critical pods only."
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: average
+value: 50
+globalDefault: false
+description: "This priority class should be used for most pods."
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: nominal
+value: 10
+globalDefault: false
+description: "This priority class should be used for most pods."
