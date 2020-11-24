@@ -25,10 +25,11 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: type
+              - key: system
                 operator: In
                 values:
-                - mini 
+                - minikube
+                - single 
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
