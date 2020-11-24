@@ -22,7 +22,7 @@ items:
   spec:
     hard:
       cpu: "50"
-      memory: 5Gi
+      memory: 4Gi
       pods: "5"
     scopeSelector:
       matchExpressions:
