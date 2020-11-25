@@ -37,4 +37,4 @@ spec:
           containerPort: {{ .Values.deployment.ports.containerPort }}
       securityContext:
         runAsUser: 1000
-        runAsGroup: 3000 
+        runAsGroup: 999 
