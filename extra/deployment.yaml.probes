@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "roar-web.name" . }}
+  name: {{ template "roar-db.name" . }}
   labels:
-    app: {{ template "roar-web.name" . }}
+    app: {{ template "roar-db.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
   namespace: {{ .Values.namespace }}
@@ -15,11 +15,8 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "roar-web.name" . }}
+        app: {{ template "roar-db.name" . }}
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 3000
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -29,9 +26,15 @@ spec:
         ports:
         - name: {{ .Values.deployment.ports.name }}
           containerPort: {{ .Values.deployment.ports.containerPort }}
-        livenessProbe:
-          httpGet:
-             path: /roar/api/v1/status
-             port: 8080
-          initialDelaySeconds: 10
-          periodSeconds: 10
+        env:
+          {{- include "roar-all.environment-values" . | indent 10 }}
+        readinessProbe:
+          exec:
+            command:
+            - mysql
+            - --version
+          failureThreshold: 3
+          initialDelaySeconds: 5
+
+       
+
