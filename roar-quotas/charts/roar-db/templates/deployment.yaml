@@ -30,11 +30,11 @@ spec:
           {{- include "roar-all.environment-values" . | indent 10 }}
         resources:
           limits:
-            memory: "10Gi"
+            memory: "100Gi"
             cpu: "1000m"
           requests:
             cpu: "1000m"
-            memory: "10Gi"
+            memory: "100Gi"
       priorityClassName: average
 
 
