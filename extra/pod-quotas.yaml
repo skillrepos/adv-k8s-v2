@@ -8,7 +8,7 @@ items:
   spec:
     hard:
       cpu: "500"
-      memory: 10Gi
+      memory: 100Gi
       pods: "5"
     scopeSelector:
       matchExpressions:
