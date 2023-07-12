@@ -1,0 +1,28 @@
+{
+  "name": "Codespace to perform Advanced Kubernetes Labs",
+  "remoteEnv": {
+    "INSTALLATION_TYPE": "labs"
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.autoSave": "onFocusChange",
+        "editor.tabSize": 2
+      },
+      "extensions": [
+        "ms-azuretools.vscode-docker"
+      ]
+    },
+    "codespaces": {
+      "openFiles": [
+        "codespace-labs.md"
+      ]
+    }
+  },
+  "postCreateCommand": "(alias k=kubectl && minikube start) || echo 'Could not auto-configure. Skipping.' "
+}
