@@ -18,11 +18,5 @@
         "ms-azuretools.vscode-docker"
       ]
     },
-    "codespaces": {
-      "openFiles": [
-        "codespace-labs.md"
-      ]
-    }
-  },
-  "postCreateCommand": "(alias k=kubectl && minikube start) || echo 'Could not auto-configure. Skipping.' "
+  "postCreateCommand": "alias k=kubectl || echo 'Could not auto-configure. Skipping.' "
 }
