@@ -87,9 +87,12 @@ command:
 - mysql
 - --version
 failureThreshold: 3
-initialDelaySeconds: 5separate terminal window, take a look at that and find the section near the bottom with the
-readinessProbe spec. (The figure below shows how to open an additional terminal window.)
+initialDelaySeconds: 5
 ```
+Also see screenshot below:
+
+![Adding --version option](./images/lab2step8.png?raw=true "Adding --version option")
+
 9. Upgrade the helm installation. After a minute or so, you can verify that you have a working mysql pod.
 (You may have to wait a moment and then check again.)
 
@@ -108,7 +111,7 @@ kubectl get svc -n probes
 ```
 kubectl port-forward -n probes svc/roar-web 8089 &
 ```
-![Port pop-up](./images/kint6.png?raw=true "Port pop-up")
+![Port pop-up](./images/advk8s6.png?raw=true "Port pop-up")
 
 12.  You should see a pop-up in your codespace that informs that `(i) Your application running on port 8089 is available.` and gives you a button to click on to `Open in browser`.  Click on that button. (If you don't see the pop-up, you can also switch to the `PORTS` tab at the top of the terminal, select the row with `8089`, and right-click and select `View in browser`.)
 
@@ -118,7 +121,13 @@ The complete URL should look something like
 ```console
 https://gwstudent-cautious-space-goldfish-p7vpg5q55xx36944-8089.preview.app.github.dev/roar/
 ```
-![Running app in K8s](./images/kint5.png?raw=true "Running app in K8s")
+![Running app in K8s](./images/advk8s5.png?raw=true "Running app in K8s")
+
+14. Since we're done with this lab, go ahead and remove the probes namespace to save resources.
+
+```
+k delete ns probes
+```
  
 <p align="center">
 **[END OF LAB]**
@@ -197,7 +206,7 @@ for the quota "pods-average". If you recall, the pods-average one has a memory l
 pods-critical one has a higher memory limit of 10Gi. So let's change priority class for the mysql pod
 to be critical.
 
-Edit the roar-quotas/charts/roar-db/templates/deployment.yaml file and change the last line from
+Edit the [**roar-quotas/charts/roar-db/templates/deployment.yaml**](./roar-quotas/charts/roar-db/templates/deployment.yaml) file and change the last line from
 ```
 priorityClassName: average
 ```
@@ -206,6 +215,8 @@ to
 priorityClassName: critical
 ```
 being careful not to change the spaces at the start of the line.
+
+![Updating priorityClassName](./images/lab2step7.png?raw=true "Updating priorityClassName")
 
 8.  Upgrade the Helm release to get your changes deployed and then look at the pods again.
 
@@ -247,6 +258,8 @@ to
 and
 ```memory: "0.5Gi"``` (for requests)
 
+![Updating limits and resources](./images/lab2step12.png?raw=true "Updating limits and resources")
+
 13. Do a helm upgrade and add the "--recreate-pods" option to force the pods to be recreated. After a
 moment if you check, you should see the pods running now. Finally, you can check the quotas again
 to see what is being used.
@@ -259,10 +272,10 @@ k get pods -n quotas
 
 k describe quota -n quotas
 ```
-14. To save cycles on the node, go ahead and remove the probes namespace.
+14. To save cycles on the node, go ahead and remove the quotas namespace.
 
 ```
-k delete ns probes
+k delete ns quotas
 ```
 <p align="center">
 **[END OF LAB]**
@@ -351,6 +364,8 @@ preferredDuringSchedulingIgnoredDuringExecution:
   preference:
     matchExpressions:
 ```
+See screenshot below for reference:
+![Updating affinity](./images/lab3step8.png?raw=true "Updating affinity")
 
 9. Now, upgrade the deployment with the recreate-pods option to see the changes take effect.
 
@@ -364,6 +379,12 @@ since it was no longer a requirement to match those labels.
 
 ```
 k get pods -n affin
+```
+
+11. To save cycles on the node, go ahead and remove the affin namespace.
+
+```
+k delete ns affin
 ```
 <p align="center">
 **[END OF LAB]**
@@ -429,6 +450,8 @@ tolerations:
   operator: "Exists"
   effect: "NoSchedule"
 ```
+See screenshot below for reference:
+![Updating taints](./images/lab4step6.png?raw=true "Updating taints")
 
 7. Now with the toleration added for the web pod, do an upgrade to see if we can get the web pod
 scheduled now.
@@ -472,6 +495,12 @@ k get pods -n taint
 
 ```  
 k taint nodes minikube roar:NoSchedule-
+```
+
+12. To save cycles on the node, go ahead and remove the taint namespace.
+
+```
+k delete ns taint
 ```
 <p align="center">
 **[END OF LAB]**
@@ -529,6 +558,8 @@ helm install -n psa context .
 ```
 k get pods -n psa
 ```
+See screenshot below for reference:
+![Errors trying to install](./images/lab5step6.png?raw=true "Errors trying to install")
 
 7. There are no pods there because they were not permitted. Let's update the deployment manifest for the database charts to fix the issues.
 Edit the file [**roar-context/charts/roar-db/templates/deployment.yaml**](./roar-context/charts/roar-db/templates/deployment.yaml) and add these lines (lining up with the same starting column as "ports:" and "env:")
@@ -545,6 +576,8 @@ Edit the file [**roar-context/charts/roar-db/templates/deployment.yaml**](./roar
         seccompProfile:
           type: RuntimeDefault
 ```
+See screenshot below for reference:
+![Correcting issues](./images/lab5step7.png?raw=true "Correcting issues")
 
 8. Now, upgrade the deployment to deploy the new manifest. And verify that the mysql pod has been admitted and has started up.
 
