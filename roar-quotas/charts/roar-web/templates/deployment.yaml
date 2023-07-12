@@ -31,9 +31,9 @@ spec:
           containerPort: {{ .Values.deployment.ports.containerPort }}
         resources:
           limits:
-            memory: "5Gi"
-            cpu: "500m"
-          requests:
             memory: "1Gi"
-            cpu: "500m"
+            cpu: "250m"
+          requests:
+            memory: "0.5Gi"
+            cpu: "250m"
       priorityClassName: average
