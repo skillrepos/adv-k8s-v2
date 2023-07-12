@@ -31,9 +31,9 @@ spec:
         resources:
           limits:
             memory: "100Gi"
-            cpu: "1000m"
+            cpu: "250m"
           requests:
-            cpu: "1000m"
+            cpu: "250m"
             memory: "100Gi"
       priorityClassName: average
 
