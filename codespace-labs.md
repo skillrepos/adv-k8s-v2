@@ -365,6 +365,7 @@ preferredDuringSchedulingIgnoredDuringExecution:
     matchExpressions:
 ```
 See screenshot below for reference:
+
 ![Updating affinity](./images/lab3step8.png?raw=true "Updating affinity")
 
 9. Now, upgrade the deployment with the recreate-pods option to see the changes take effect.
@@ -451,6 +452,7 @@ tolerations:
   effect: "NoSchedule"
 ```
 See screenshot below for reference:
+
 ![Updating taints](./images/lab4step6.png?raw=true "Updating taints")
 
 7. Now with the toleration added for the web pod, do an upgrade to see if we can get the web pod
@@ -559,6 +561,7 @@ helm install -n psa context .
 k get pods -n psa
 ```
 See screenshot below for reference:
+
 ![Errors trying to install](./images/lab5step6.png?raw=true "Errors trying to install")
 
 7. There are no pods there because they were not permitted. Let's update the deployment manifest for the database charts to fix the issues.
@@ -577,6 +580,7 @@ Edit the file [**roar-context/charts/roar-db/templates/deployment.yaml**](./roar
           type: RuntimeDefault
 ```
 See screenshot below for reference:
+
 ![Correcting issues](./images/lab5step7.png?raw=true "Correcting issues")
 
 8. Now, upgrade the deployment to deploy the new manifest. And verify that the mysql pod has been admitted and has started up.
