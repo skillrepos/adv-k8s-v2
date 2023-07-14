@@ -18,7 +18,7 @@ them up, and how to debug problems around them.**
 1. For this workshop, files that we need to use are contained in the directory **adv-k8s** in the home
 directory on the disk. Under that directory are subdirectories for each of the main topics that we will
 cover. For this section, we’ll use files in the roar-probes directory. (roar is the name of the sample app
-we’ll be working with.) Change into that directory. In the terminal emulator, enter.
+we’ll be working with.) Change into that directory. In the terminal, enter.
 
 ```
 cd roar-probes
@@ -45,7 +45,7 @@ labels on the pods
 k get pods -n probes --show-labels
 ```
 
-4.  You should see that while the web pod is running, the database pod is not ready at all. (If the web pod
+4.  You should see that while the web pod is running and ready, the database pod is not ready. (If the web pod
 isn't "Running" yet, it may still need time to startup. You can run the command again after a minute or
 so to give it time to finish starting up.). Now, let’s do a “describe” operation on the pod itself. We’ll
 specify the pod using one of its labels instead of having to use the pod name.
@@ -111,9 +111,10 @@ kubectl get svc -n probes
 ```
 kubectl port-forward -n probes svc/roar-web 8089 &
 ```
-![Port pop-up](./images/advk8s6.png?raw=true "Port pop-up")
 
 12.  You should see a pop-up in your codespace that informs that `(i) Your application running on port 8089 is available.` and gives you a button to click on to `Open in browser`.  Click on that button. (If you don't see the pop-up, you can also switch to the `PORTS` tab at the top of the terminal, select the row with `8089`, and right-click and select `View in browser`.)
+
+![Port pop-up](./images/advk8s6.png?raw=true "Port pop-up")
 
 13.  What you should see in the browser is an application called **Apache Tomcat** running. Click at the end of the URL in the address bar and add the text `/roar/`.  Make sure to include the trailing slash.  Then hit enter and you should see the *roar* application running in the browser.
 
