@@ -242,14 +242,14 @@ get the name of the node and the second to check how much memory it has.
 ```
 k get nodes
 
-k describe node <node-name-goes-here> | grep memory
+k describe node minikube | grep memory
 ```
 
 11.  Our mysql pod is asking for an unrealistically large number (to provoke the error). Even if it were
 just the under the amount available on the node, other processes running on the node in other
 namespaces could be using several Gi.
 
-12. Getting back to our needs let's drop the limit and request values down to 5 and 3 respectively and
+12. Getting back to our needs let's drop the limit and request values down to 1 and 0.5 respectively and
 see if that fixes things. Open up the [**roar-quotas/charts/roar-db/templates/deployment.yaml**](./roar-quotas/charts/roar-db/templates/deployment.yaml) and change the two lines near the bottom from
 ```
 memory: "100Gi"
@@ -262,8 +262,8 @@ and
 ![Updating limits and resources](./images/lab2step12.png?raw=true "Updating limits and resources")
 
 13. Do a helm upgrade and add the "--recreate-pods" option to force the pods to be recreated. After a
-moment if you check, you should see the pods running now. Finally, you can check the quotas again
-to see what is being used.
+moment if you check, you should see the pods running now. (If not, you might have to delete the mysql deployment and re-upgrade.)
+Finally, you can check the quotas again to see what is being used.
 
 ```
 helm upgrade -n quotas quota --recreate-pods .
