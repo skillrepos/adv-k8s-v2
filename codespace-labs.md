@@ -548,7 +548,7 @@ look at that file and then apply it to create the namespace.
 ```
 cat ../extra/psa-ns.yml
 
-k apply -f ../psa-ns.yml
+k apply -f ../extra/psa-ns.yml
 ```
 5. Now, let's see what happens when we try to install the same helm chart in the new namespace.
 
