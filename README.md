@@ -46,7 +46,7 @@ You can open the labs doc either in a separate browser tab/window via [Open Labs
 
 After the codespace has started, you can close the *Welcome* doc by clicking on the X in its tab. Then open the labs document by going to the file tree on the left, find the file named **codespace-labs.md**, right-click on it, and open it with the **Preview** option.)
 
-![Labs doc preview in codespace](./images/k8sdev3.png?raw=true "Labs doc preview in codespace")
+![Labs doc preview in codespace](./images/advk8s7.png?raw=true "Labs doc preview in codespace")
 
 This will open it up in a tab above your terminal. Then you can follow along with the steps in the labs. 
 Any command in the gray boxes is either code intended to be run in the console or code to be updated in a file.
