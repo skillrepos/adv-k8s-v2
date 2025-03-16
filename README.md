@@ -9,7 +9,7 @@ Click here ------> [![Open in GitHub Codespaces](https://github.com/codespaces/b
 
 Then click on the option to create a new codespace.
 
-![Creating new codespace from button](./images/k8sdev38.png?raw=true "Creating new codespace from button")
+![Creating new codespace from button](./images/advk8s0.png?raw=true "Creating new codespace from button")
 
 **This will run for several minutes while it gets everything ready.**
 
