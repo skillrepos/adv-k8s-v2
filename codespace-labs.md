@@ -164,7 +164,7 @@ k apply -f ./pod-quotas.yaml -n quotas
 3.  After setting up the quotas, you can see how things are currently setup and allocated.
 
 ```
-k get priorityClassses
+k get priorityClasses
 
 k describe quota -n quotas
 ```
@@ -205,7 +205,11 @@ for the quota "pods-average". If you recall, the pods-average one has a memory l
 pods-critical one has a higher memory limit of 10Gi. So let's change priority class for the mysql pod
 to be critical.
 
-Edit the [**roar-quotas/charts/roar-db/templates/deployment.yaml**](./roar-quotas/charts/roar-db/templates/deployment.yaml) file and change the last line from
+Edit the [**roar-quotas/charts/roar-db/templates/deployment.yaml**](./roar-quotas/charts/roar-db/templates/deployment.yaml) file 
+```
+code charts/roar-db/templates/deployment.yaml
+```
+and change the last line from
 ```
 priorityClassName: average
 ```
