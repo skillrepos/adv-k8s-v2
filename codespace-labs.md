@@ -435,7 +435,7 @@ k get pods -n taint
 k describe -n taint pod -l app=roar-web
 ```
 
-5. Notice that it says "1 node(s) had taints that the pod didn't tolerate." So our database pod must have
+5. Notice that it says "1 node(s) had untolerated taint {roar: app}." So our database pod must have
 had a toleration for it since it was running. Take a look at the two tolerations in the database pod (at
 the end of the deployment.yaml file).
 
