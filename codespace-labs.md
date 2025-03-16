@@ -1,11 +1,10 @@
 # Advanced Kubernetes
 ## Gaining Mastery over your Deployments
 ## Session labs for codespace only
-## Revision 2.1 - 07/15/23
+## Revision 2.2 - 03/15/25
 
 **Startup**
 ```
-alias k=kubectl
 minikube start
 ```
 
