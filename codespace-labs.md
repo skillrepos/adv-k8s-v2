@@ -14,7 +14,7 @@ minikube start
 **Purpose: In this lab, we'll learn how Kubernetes uses probes for determining the health of pods, how to set
 them up, and how to debug problems around them.**
 
-1. For this workshop, files that we need to use are contained in the directory **adv-k8s** in the home
+1. For this workshop, files that we need to use are contained in the directory **adv-k8s-v2** in the home
 directory on the disk. Under that directory are subdirectories for each of the main topics that we will
 cover. For this section, we’ll use files in the roar-probes directory. (roar is the name of the sample app
 we’ll be working with.) Change into that directory. In the terminal, enter.
@@ -92,8 +92,7 @@ Also see screenshot below:
 
 ![Adding --version option](./images/lab2step8.png?raw=true "Adding --version option")
 
-9. Upgrade the helm installation. After a minute or so, you can verify that you have a working mysql pod.
-(You may have to wait a moment and then check again.)
+9. Save the changes to the file. Upgrade the helm installation. After a minute or so, you can verify that you have a working mysql pod. (You may have to wait a moment and then check again.)
 
 ```
 helm upgrade -n probes probes .
@@ -102,13 +101,13 @@ helm upgrade -n probes probes .
 10. At this point, you can get the service's nodeport.
 
 ```   
-kubectl get svc -n probes
+k get svc -n probes
 ```
 
 11.  Next, let's look at the running application.  Run the command below.
 
 ```
-kubectl port-forward -n probes svc/roar-web 8089 &
+k port-forward -n probes svc/roar-web 8089 &
 ```
 
 12.  You should see a pop-up in your codespace that informs that `(i) Your application running on port 8089 is available.` and gives you a button to click on to `Open in browser`.  Click on that button. (If you don't see the pop-up, you can also switch to the `PORTS` tab at the top of the terminal, select the row with `8089`, and right-click and select `View in browser`.)
