@@ -7,8 +7,20 @@
 ```
 minikube start
 ```
+</br></br></br>
+**Tips**
+</br>
+A. Edits can be done via copy and paste - you may need to use keyboard shortcuts though - Ctrl/Cmd+C, Ctrl/Cmd+V.
+</br>
+B. Pay careful attention to indenting when editing. Pasting may throw off indenting. Use screenshots as guide.
+</br>
+C. Make sure you are in the right roar-* directory when starting to do each lab.
+</br>
+D. To edit a file in the codespace environment, you can use the "code <relative-path-to-file>" command in the terminal. Note that you will already be in the roar-* directory.
+<br>
+E. It's a good idea to save your changes with the menu or Ctrl/Cmd+S, but not absolutely required in the codespace environment. 
 
-
+</br></br></br>
 **Lab 1- Working with Kubernetes Probes**
 
 **Purpose: In this lab, we'll learn how Kubernetes uses probes for determining the health of pods, how to set
