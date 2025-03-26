@@ -92,7 +92,7 @@ Also see screenshot below:
 
 ![Adding --version option](./images/lab2step8.png?raw=true "Adding --version option")
 
-9. Save the changes to the file. Upgrade the helm installation. After a minute or so, you can verify that you have a working mysql pod. (You may have to wait a moment and then check again.)
+9. Save the changes to the file (Ctrl/Cmd+S). Upgrade the helm installation. After a minute or so, you can verify that you have a working mysql pod. (You may have to wait a moment and then check again.)
 
 ```
 helm upgrade -n probes probes .
