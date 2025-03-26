@@ -1,7 +1,7 @@
 # Advanced Kubernetes
 ## Gaining Mastery over your Deployments
 ## Session labs for codespace only
-## Revision 2.2 - 03/15/25
+## Revision 2.3 - 03/26/25
 
 **Startup**
 ```
@@ -44,10 +44,10 @@ labels on the pods
 k get pods -n probes --show-labels
 ```
 
-4.  You should see that while the web pod is running and ready, the database pod is not ready. (If the web pod
-isn't "Running" yet, it may still need time to startup. You can run the command again after a minute or
-so to give it time to finish starting up.). Now, let’s do a “describe” operation on the pod itself. We’ll
-specify the pod using one of its labels instead of having to use the pod name.
+4.  You should see that while both pods are running, the web pod is running **and** ready, while the database pod
+is not ready (0/1). (If the web pod isn't "Running" yet, it may still need time to startup. You can run the command
+again after a minute or so to give it time to finish starting up.). Now, let’s do a “describe” operation on the pod itself.
+We’ll specify the pod using one of its labels instead of having to use the pod name.
 
 ```
 k describe -n probes pod -l app=mysql
