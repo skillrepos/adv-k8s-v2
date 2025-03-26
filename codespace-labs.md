@@ -221,7 +221,7 @@ being careful not to change the spaces at the start of the line.
 
 ![Updating priorityClassName](./images/lab2step7.png?raw=true "Updating priorityClassName")
 
-8.  Upgrade the Helm release to get your changes deployed and then look at the pods again.
+8.  Save your changes and upgrade the Helm release to get your changes deployed and then look at the pods again.
 
 ```
 helm upgrade -n quotas quota .
