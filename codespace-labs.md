@@ -313,7 +313,7 @@ k describe -n affin pod -l app=mysql
 ```
 
 3. In the output of the describe command, in the Events section, you can see that it failed to be
-scheduled because there were "0/1 nodes are available: 1 node(s) didn't match node selector". And
+scheduled because there were "0/1 nodes are available: 1 node(s) didn't match Pod's node affinity/selector". And
 further up, you can see that it is looking for a Node-Selector of "type=mini".
 
 4. This means the pod definition expected at least one node to have a label of "type=mini". Take a look
@@ -375,7 +375,7 @@ See screenshot below for reference:
 
 ![Updating affinity](./images/lab3step8.png?raw=true "Updating affinity")
 
-9. Now, upgrade the deployment with the recreate-pods option to see the changes take effect.
+9. Save your changes and upgrade the deployment with the recreate-pods option to see the changes take effect.
 
 ```
 helm upgrade -n affin affin --recreate-pods .
