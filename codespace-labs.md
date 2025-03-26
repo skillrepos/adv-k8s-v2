@@ -261,13 +261,17 @@ to
 and
 ```memory: "0.5Gi"``` (for requests)
 
+Save your changes.
+
 ![Updating limits and resources](./images/lab2step12.png?raw=true "Updating limits and resources")
 
-13. Do a helm upgrade and add the "--recreate-pods" option to force the pods to be recreated. After a
+13. Delete the mysql deployment. Then do a helm upgrade and add the "--recreate-pods" option to force the pods to be recreated. After a
 moment if you check, you should see the pods running now. (If not, you might have to delete the mysql deployment and re-upgrade.)
 Finally, you can check the quotas again to see what is being used.
 
 ```
+k delete deploy -n quotas mysql
+
 helm upgrade -n quotas quota --recreate-pods .
  (ignore the deprecated warning)
 
