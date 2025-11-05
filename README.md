@@ -1,6 +1,20 @@
 # Advanced Kubernetes - Gaining Mastery over your deployments - lab setup
 
-## 1. Create your own codespace to run the labs by clicking on the button below.
+## 1. Set codespace timeout (optional but recommended)
+
+While logged in to GitHub, go to https://github.com/settings/codespaces.
+
+Scroll down and find the section on the page labeled *Default idle timeout*. 
+
+Increase the default timeout value to 90 minutes and then select the *Save* button.
+
+![Increasing default timeout](./images/k8sdev33.png?raw=true "Increasing default timeout")
+
+(**NOTE**: If your codespace does time out at some point in the course, there should be a button to restart it. In that case, you will need to run the *minikube start* command again.)
+
+<br><br>
+
+## 2. Create your own codespace to run the labs by clicking on the button below.
 <br/><br/>
 
 Click here ------> [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/skillrepos/adv-k8s-v2?quickstart=1)
@@ -15,7 +29,7 @@ Then click on the option to create a new codespace.
 
 <br/><br/>
 
-## 2. Start your single-node Kubernetes cluster
+## 3. Start your single-node Kubernetes cluster
 There is a simple one-node Kubernetes instance called **minikube** available in your codespace. Start it the following way:
 
 Run the following commands in the codespace's terminal (**This will take several minutes to run...**):
@@ -40,7 +54,7 @@ The output should look similar to the following.
 ```
 (**NOTE:** If you get a failure message like this "Exiting due to DRV_DOCKER_NOT_RUNNING: Found docker, but the docker service isn't running. Try restarting the docker service.", that means that Docker is still starting up. Just wait a minute or two and then run the command again.)
 
-## 3. Open the labs doc. 
+## 4. Open the labs doc. 
 
 You can open the labs doc either in a separate browser tab/window via [Open Labs Document in Browser](https://github.com/skillrepos/adv-k8s-v2/blob/main/codespace-labs.md) and/or you can open the labs in the codespace itself. To open it in the codespace, follow the instructions below.
 
@@ -53,16 +67,6 @@ Any command in the gray boxes is either code intended to be run in the console o
 
 Labs doc: [Advanced Kubernetes Labs](codespace-labs.md)
 
-## 4. Set codespace timeout (optional but recommended)
 
-While logged in to GitHub, go to https://github.com/settings/codespaces.
-
-Scroll down and find the section on the page labeled *Default idle timeout*. 
-
-Increase the default timeout value to 90 minutes and then select the *Save* button.
-
-![Increasing default timeout](./images/k8sdev33.png?raw=true "Increasing default timeout")
-
-(**NOTE**: If your codespace does time out at some point in the course, there should be a button to restart it. In that case, you will need to run the *minikube start* command again.)
 
 
