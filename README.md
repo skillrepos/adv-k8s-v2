@@ -1,6 +1,6 @@
 # Advanced Kubernetes - Gaining Mastery over your deployments - lab setup
 
-## 1. Set codespace timeout (optional but recommended)
+## 1. Set codespace timeout
 
 While logged in to GitHub, go to https://github.com/settings/codespaces.
 
